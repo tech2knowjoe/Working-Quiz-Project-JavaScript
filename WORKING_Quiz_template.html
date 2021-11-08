@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+
+    <div id="q1"></div>
+    <div id="1a"></div>
+    <div id="1b"></div>
+    <div id="1c"></div>
+    <div id="1d"></div>
+    <br>
+    <div id="correct1"></div>
+    <button id="btn1">Answer</button>
+    <br>
+    <br>
+
+    <div id="q2"></div>
+    <div id="2a"></div>
+    <div id="2b"></div>
+    <div id="2c"></div>
+    <div id="2d"></div>
+    <br>
+    <div id="correct2"></div>
+    <button id="btn2">Answer</button>
+    <br>
+    <br>
+
+    <script>
+        
+        class Quiz {
+            constructor (question) {
+                this.question = question;
+            }
+        }
+
+        class Answers {
+            constructor (ans1) {
+                this.ans1 = ans1;
+            }
+        }
+
+        function testOne() {
+            
+            // Randomly pick 1 answer and turn it into a1 
+            let divId = group2;
+            let myArray = group;
+            let rand1 = myArray[Math.floor(Math.random()*myArray.length) ];
+            let a1 = rand1;
+
+            //deletion section and create new array minus a1
+            let newArray = myArray;
+            let forDelete1 = [a1]
+            let newArray1 = newArray.filter(item => !forDelete1.includes(item));
+
+            //randomly pick Number 2
+            let rand2 = newArray1[Math.floor(Math.random()*newArray1.length) ];
+
+            //create newArray2 and Rand3 and delete and create new array after deleting a2
+            let a2 = rand2;
+            let forDelete2 = [a2];
+            let newArray2 = newArray1.filter(item => !forDelete2.includes(item));
+            let rand3 = newArray2[Math.floor(Math.random()*newArray2.length) ];
+
+            //create newArray3 and Rand4
+            let a3 = rand3;
+            let forDelete3 = [a3];
+            let newArray3 = newArray2.filter(item => !forDelete3.includes(item));
+            let rand4 = newArray3[Math.floor(Math.random()*newArray3.length) ];
+            let a4 = rand4;
+
+            //displays everything on webpage
+            group2[0].innerHTML = ` A: ${a1.ans1}`;
+            group2[1].innerHTML = ` B: ${a2.ans1}`;
+            group2[2].innerHTML = ` C: ${a3.ans1}`;
+            group2[3].innerHTML = ` D: ${a4.ans1}`;
+        }
+
+
+        let question1 = new Quiz(`1) What is 1 + 1?`);
+        
+        let q1a = new Answers(`1`);
+        let q1b = new Answers(`2`);
+        let q1c = new Answers(`32`);
+        let q1d = new Answers(`35`);
+        var group = [q1a, q1b, q1c, q1d]; 
+        
+        let q1ida = document.getElementById("1a");
+        let q1idb = document.getElementById("1b");
+        let q1idc = document.getElementById("1c");
+        let q1idd = document.getElementById("1d");
+        var group2 = [q1ida, q1idb, q1idc, q1idd];
+
+        document.getElementById("q1").innerHTML = question1.question;
+
+        document.getElementById("btn1").addEventListener("click", function() {
+            document.getElementById("correct1").innerHTML = `The Correct Answer is: ${q1b.ans1}`;  
+        });
+        
+        testOne() // arrays group and group2  used to randomize answers 
+
+
+        // question 2
+
+        let question2 = new Quiz(`2) What is 3 + 3?`);
+        let q2a = new Answers(`4`);
+        let q2b = new Answers(`5`);
+        let q2c = new Answers(`6`);
+        let q2d = new Answers(`2`);
+        var group = [q2a, q2b, q2c, q2d];
+    
+        let q2ida = document.getElementById("2a");
+        let q2idb = document.getElementById("2b");
+        let q2idc = document.getElementById("2c");
+        let q2idd = document.getElementById("2d");
+        var group2 = [q2ida, q2idb, q2idc, q2idd];
+
+        document.getElementById("q2").innerHTML = question2.question;
+
+        document.getElementById("btn2").addEventListener("click", function() {
+            document.getElementById("correct2").innerHTML = `The Correct Answer is: ${q2c.ans1}`;  
+        });
+
+        testOne() 
+
+
+    </script>
+    
+</body>
+</html>
